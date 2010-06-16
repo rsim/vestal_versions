@@ -24,7 +24,7 @@ module VestalVersions
       def options
         @options ||= {}
       end
-
+     
       # If given a setter method name, will assign the first argument to the +options+ hash with
       # the method name (sans "=") as the key. If given a getter method name, will attempt to
       # a value from the +options+ hash for that key. If the key doesn't exist, defers to +super+.

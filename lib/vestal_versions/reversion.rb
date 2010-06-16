@@ -28,7 +28,7 @@ module VestalVersions
       # the return value of the +revert_to+ method is also the target version number.
       def revert_to(value)
         to_number = versions.number_at(value)
-
+        
         changes_between(version, to_number).each do |attribute, change|
           write_attribute(attribute, change.last)
         end
@@ -40,8 +40,12 @@ module VestalVersions
       # after the reversion. The return value is the success of the save.
       def revert_to!(value)
         revert_to(value)
-        reset_version if saved = save
-        saved
+        if save
+           reset_version 
+           return true
+        else
+           return false
+        end
       end
 
       # Returns a boolean specifying whether the object has been reverted to a previous version or

@@ -1,3 +1,10 @@
+= Updated for Rails 3
+
+I (rogergl) made some minor changes to make it work with Rails 3.
+To make Rails3 happy I had to rename the changes column. The column formerly known
+as changes is now named data_changes.
+So far it seems to work. At least all tests pass.
+
 = vestal_versions
 
 Finally, DRY ActiveRecord versioning!

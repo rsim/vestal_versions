@@ -1,7 +1,9 @@
 require File.join(File.dirname(__FILE__), 'test_helper')
 
 class ReversionTest < Test::Unit::TestCase
-  context 'A model reversion' do
+  
+   context 'A model reversion' do
+
     setup do
       @user, @attributes, @times = User.new, {}, {}
       names = ['Steve Richert', 'Stephen Richert', 'Stephen Jobs', 'Steve Jobs']

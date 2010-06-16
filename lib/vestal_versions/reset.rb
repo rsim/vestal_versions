@@ -17,9 +17,12 @@ module VestalVersions
       # <tt>:dependent</tt> option given to the +versioned+ method. See the +versioned+ method
       # documentation for more details.
       def reset_to!(value)
-        if saved = skip_version{ revert_to!(value) }
-          versions.send(:delete_records, versions.after(value))
-          reset_version
+        saved =  skip_version do
+           revert_to(value)
+           save
+        end
+        if saved 
+          versions.send(:delete_records, versions.after(value))         
         end
         saved
       end

@@ -21,6 +21,7 @@ module VestalVersions
       # version tag or a version object itself.
       def changes_between(from, to)
         from_number, to_number = versions.number_at(from), versions.number_at(to)
+     
         return {} if from_number == to_number
         chain = versions.between(from_number, to_number).reject(&:initial?)
         return {} if chain.empty?
@@ -28,8 +29,8 @@ module VestalVersions
         backward = from_number > to_number
         backward ? chain.pop : chain.shift unless from_number == 1 || to_number == 1
 
-        chain.inject({}) do |changes, version|
-          changes.append_changes!(backward ? version.changes.reverse_changes : version.changes)
+         chain.inject({}) do |changes, version|
+          changes.append_changes!(backward ? version.data_changes.reverse_changes : version.data_changes)
         end
       end
 
