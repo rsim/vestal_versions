@@ -31,7 +31,7 @@ class VersionTest < Test::Unit::TestCase
 
     should 'default to ordering by number when finding through association' do
       sql = @user.versions.select.to_sql()
-      assert sql.include? 'versions.number ASC'
+      assert_match /\"?versions\"?.\"?number\"? asc/i, sql
     end
 
     should 'return true for the "initial?" method when the version number is 1' do
